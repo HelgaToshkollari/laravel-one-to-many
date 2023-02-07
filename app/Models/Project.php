@@ -11,4 +11,8 @@ class Project extends Model
     protected $fillable=[
         "title", "cover_img","description","user_id","type_id"
     ];
+
+    public function type(){
+        return $this->hasMany(Type::class);
+    }
 }

@@ -39,6 +39,7 @@ class TypeController extends Controller
     {
         $data= $request->all();
         $type = Type::create($data);
+        
         return redirect()->route("admin.types.show", $type->id);
 
     }
