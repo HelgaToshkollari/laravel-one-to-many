@@ -22,7 +22,17 @@
     <div class="form-group mb-4">
       <label class="form-label" for="form6Example3">Description</label>
       <input type="text" id="form6Example3" class="form-control"name="description" value="{{$project->description }}" />
+    </div>  
+
+    <div class="form-group mb-4">
+        <label class="form-label">Type</label>
+        <select class="form-select" name="type_id" value="{{$project->type }}">
+            @foreach ($types as $type)
+                <option value="{{$type->id}}">{{$type->name}}</option>
+            @endforeach
+        </select>
     </div>
+    
   
     <div class="form-group row">
       <div class="col-sm-10">

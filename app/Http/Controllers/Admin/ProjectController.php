@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreProjectRequest;
 use App\Models\Project;
+use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,8 +20,9 @@ class ProjectController extends Controller
     public function index()
     {
         $projects= Project::all();
+        $types= Type::all();
 
-        return view ("admin.projects.index", compact("projects"));
+        return view ("admin.projects.index", compact("projects","types"));
     }
 
     /**
@@ -28,9 +30,10 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Project $project)
     {
-        return view("admin.projects.create");
+        $types= Type::all();
+        return view("admin.projects.create", compact("project","types"));
     }
 
     /**
@@ -69,7 +72,8 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         //$project= Project::findOrFail($id);
-        return view("admin.projects.edit", compact("project"));
+        $types= Type::all();
+        return view("admin.projects.edit", compact("project","types"));
     }
 
     /**

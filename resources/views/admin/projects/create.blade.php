@@ -15,7 +15,7 @@
    </div>
   @endif
 
-  <form action="{{ route("admin.projects.store") }}" method="POST" enctype="multipart/form-data">
+  <form action="{{ route("admin.projects.store") }}" method="POST" >
     @csrf
     
     <div class="form-group mb-4">
@@ -26,12 +26,21 @@
     
     <div class="form-group mb-4">
       <label class="form-label" for="form6Example3">Image URL</label>
-      <input type="file" id="form6Example3" class="form-control"name="cover_img" />
+      <input type="text" id="form6Example3" class="form-control"name="cover_img" />
     </div>
     
     <div class="form-group mb-4">
       <label class="form-label" for="form6Example3">Description</label>
       <input type="text" id="form6Example3" class="form-control"name="description" />
+    </div>
+
+    <div class="form-group mb-4">
+      <label class="form-label">Type</label>
+      <select class="form-select" name="type_id">
+          @foreach ($types as $type)
+              <option value="{{$type->id}}">{{$type->name}}</option>
+          @endforeach
+      </select>
     </div>
 
    
